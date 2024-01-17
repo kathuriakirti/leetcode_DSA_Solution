@@ -5,19 +5,11 @@ public:
         set<int> ws;
         vector<int>l;
         vector<int>w;
-        for(int i=0;i<matches.size();i++){
-              for(int j=0;j<matches[0].size();j++){
-                     if(j==1) looser[matches[i][j]]++;   
-              }
+        for(auto arr:matches){
+               looser[arr[1]]++;
         }
-        for(int i=0;i<matches.size();i++){
-                for(int j=0;j<matches[0].size();j++){
-                        if(j==0){
-                               if(looser.find(matches[i][j])==looser.end()){
-                                       ws.insert(matches[i][j]);
-                               }
-                        }
-                }
+        for(auto arr:matches){
+               if(looser.find(arr[0])==looser.end()) ws.insert(arr[0]);
         }
         for(auto &[f,s]:looser){
                if(s==1) l.push_back(f);
