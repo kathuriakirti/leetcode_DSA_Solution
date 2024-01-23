@@ -5,11 +5,11 @@ public:
             for(int y=i;y<=j;y++){
                    sum+=nums[y];
             }
-        int max_sum=sum;
+        
           j++;
+         int max_sum=sum;
           while(j<nums.size()){
-                   sum-=nums[i];
-                   sum+=nums[j];
+                   sum=  sum-nums[i]+nums[j];
                    max_sum= max(max_sum,sum);
                    j++;i++;
             }
