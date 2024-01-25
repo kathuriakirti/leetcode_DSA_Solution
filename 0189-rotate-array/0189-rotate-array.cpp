@@ -14,8 +14,18 @@ public:
                nums[i]=temp_array[i];
          }
     }
+    void modulus(vector<int>& nums, int k){
+           int n= nums.size();
+           vector<int>ans(n);
+           for(int index=0;index<n;index++){
+                  int new_index=  (index+k)%n;
+                  ans[new_index]=nums[index];
+           }
+         nums=ans;
+    }
     void rotate(vector<int>& nums, int k) {
-          k=k%nums.size();
-          temp_arr(nums,k);
+          // k=k%nums.size();
+          // temp_arr(nums,k);
+          modulus(nums,k);
     }
 };
