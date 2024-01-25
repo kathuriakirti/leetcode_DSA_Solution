@@ -3,7 +3,7 @@ public:
     void temp_arr(vector<int>& nums, int k){
            int n= nums.size();
             vector<int>temp_array(k);
-           for(int i=0;i<k&&i<n;i++){
+           for(int i=0;i<k;i++){
                    temp_array[i]=nums[n-i-1];
            }
          reverse(temp_array.begin(),temp_array.end());
