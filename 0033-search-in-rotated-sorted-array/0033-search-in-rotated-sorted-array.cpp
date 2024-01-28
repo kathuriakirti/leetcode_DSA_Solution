@@ -10,7 +10,7 @@ public:
                  return mid - 1;
              } else if (mid+1<n && num[mid] > num[mid + 1]) {
                  return mid;
-             } else if (num[mid]<num[left]) {
+             } else if (num[mid]<num[0]) {
                  right = mid - 1;
              } else {
                  left = mid + 1;
