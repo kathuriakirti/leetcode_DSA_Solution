@@ -37,7 +37,7 @@ public:
          int ans = -1;
          if (n == 1) {
              if (target == num[0]) {
-                 return 0;
+                 ans=0;
              }
          } 
           else if (target >= num[0] && target <= num[pivotIndex]) {
