@@ -35,16 +35,16 @@ public:
          int pivotIndex = FindPivotIndex(num, target);
          int n = num.size();
          int ans = -1;
-         if (n == 1) {
-             if (target == num[0]) {
-                 ans=0;
-             }
-         } 
-         else if(n==2){
-              if(target==num[0]) ans=0;
-              else if(target==num[1]) ans=1;
-         }
-          else if (target >= num[0] && target <= num[pivotIndex]) {
+         // if (n == 1) {
+         //     if (target == num[0]) {
+         //         ans=0;
+         //     }
+         // } 
+         // else if(n==2){
+         //      if(target==num[0]) ans=0;
+         //      else if(target==num[1]) ans=1;
+         // }
+          if (target >= num[0] && target <= num[pivotIndex]) {
              ans = search_element(num, target, 0, pivotIndex);
          } else {
              ans = search_element(num, target, pivotIndex + 1, n - 1);
