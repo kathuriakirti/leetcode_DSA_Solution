@@ -13,7 +13,7 @@ public:
                max_sum= max(sum,max_sum);
               }
         }
-        cout<<max_sum<<endl;
-        return n==1?nums[0]/double(k):max_sum/double(k);
+       
+        return max_sum/double(k);
     }
 };
