@@ -1,47 +1,36 @@
- class Solution {
+class Solution {
 public:
-    int FindPivotIndex(vector<int>& nums) {
-        int left = 0, right = nums.size() - 1;
-        
-        while (left < right) {
-            int mid = left + (right - left) / 2;
-            
-            if (nums[mid] > nums[right]) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
-        }
-        
-        return left;
+    int findPivotIdx(vector<int>&nums,int target){
+          int n=nums.size();
+          int st=0,e=n-1;
+          while(st<=e){
+                int mid=st+(e-st)/2;
+                if(st==e) return st;
+                else if(mid-1>=0 && nums[mid-1]>nums[mid]) return mid-1;
+                else if(mid+1<n && nums[mid]>nums[mid+1]) return mid;
+                else if(nums[mid]<=nums[0])  e=mid;
+                else st=mid+1;
+               cout<<"e: "<<e<<endl;
+          }
+    return -1;
     }
-    
-    int binarySearch(vector<int>& nums, int target, int left, int right) {
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            
-            if (nums[mid] == target) {
-                return mid;
-            } else if (nums[mid] < target) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-            }
-        }
-        
-        return -1;
+    int searchElement(vector<int>&nums,int target,int st,int e){
+          while(st<=e){
+                int mid= st+(e-st)/2;
+                if(nums[mid]==target) return mid;
+                else if(nums[mid]<target) st=mid+1;
+                else e=mid-1;
+          }
+    return -1;
     }
-    
     int search(vector<int>& nums, int target) {
-        int n = nums.size();
-        if (n == 0) return -1;
-        
-        int pivotIndex = FindPivotIndex(nums);
-        
-        if (pivotIndex == 0 || target < nums[0]) {
-            return binarySearch(nums, target, pivotIndex, n - 1);
-        } else {
-            return binarySearch(nums, target, 0, pivotIndex - 1);
-        }
+          int pivotIdx= findPivotIdx(nums,target);
+          cout<<pivotIdx;
+          int ans=-1,n=nums.size();
+          if(target>=nums[0] && target<=nums[pivotIdx] )
+                ans= searchElement(nums,target,0,pivotIdx);
+          else   
+                 ans= searchElement(nums,target,pivotIdx+1,n-1);
+    return ans;
     }
 };
