@@ -13,10 +13,19 @@ public:
         //      num++;
         // }
         // return num-1;
-        for(int i=0;i<arr.size();i++){
-              if(arr[i]<=k)k++;
-              else break;
-        }
-        return k;
+        // for(int i=0;i<arr.size();i++){
+        //       if(arr[i]<=k)k++;
+        //       else break;
+        // }
+        // return k;
+        int n=arr.size();
+        int st=0,e=n-1;
+      while(st<=e){
+            int mid= st+(e-st)/2;
+            int missing=arr[mid]-(mid+1);
+            if(missing<k) st=mid+1;
+            else e=mid-1;
+      }
+    return st+k;
     }
 };
