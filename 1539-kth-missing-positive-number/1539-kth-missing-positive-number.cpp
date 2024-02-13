@@ -26,6 +26,6 @@ public:
             if(missing<k) st=mid+1;
             else e=mid-1;
       }
-    return st+k;
+    return e+1+k;
     }
 };
