@@ -1,32 +1,32 @@
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
-           int m = matrix.size(), n = matrix[0].size();
-           int starting_row=0,ending_col=n-1,ending_row=m-1,starting_col;
-           int count=0,total_element=m*n;
-           vector<int>ans;
-           while(count<total_element){
-                  for(int i=starting_col;i<=ending_col&&count<total_element;i++){
-                           ans.push_back(matrix[starting_row][i]);
-                           count++;
-                  }
-                  starting_row++;
-                  for(int i=starting_row;i<=ending_row && count<total_element;i++){
-                           ans.push_back(matrix[i][ending_col]);
-                           count++;
-                  }
-                  ending_col--;
-                 for(int i=ending_col;i>=starting_col && count<total_element;i--){
-                           ans.push_back(matrix[ending_row][i]);
-                           count++;
-                  }
-                  ending_row--;
-                for(int i=ending_row;i>=starting_row && count<total_element;i--){
-                           ans.push_back(matrix[i][starting_col]);
-                           count++;
-                  }
-               starting_col++;
-           }
+         int m=matrix.size(),n=matrix[0].size();
+         int elements=0,start_row=0,end_row=m-1;
+         int start_col=0,end_col=n-1;
+         vector<int>ans;
+         while(elements<m*n){
+               for(int col=start_col;col<=end_col && elements<m*n;col++){
+                      ans.push_back(matrix[start_row][col]);
+                      elements++;
+               }
+               start_row++;
+              for(int row=start_row;row<=end_row && elements<m*n;row++){
+                     ans.push_back(matrix[row][end_col]);
+                      elements++;
+              }
+              end_col--;
+              for(int col=end_col;col>=start_col && elements<m*n;col--){
+                     ans.push_back(matrix[end_row][col]);
+                      elements++;
+              }
+              end_row--;
+              for(int row=end_row;row>=start_row && elements<m*n;row--){
+                      ans.push_back(matrix[row][start_col]);
+                      elements++;
+              }
+              start_col++;
+         }
     return ans;
     }
 };
