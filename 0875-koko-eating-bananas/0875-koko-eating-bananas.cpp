@@ -1,9 +1,9 @@
 class Solution {
 public:
-   bool canEatBananas(vector<int>&piles,int mid,int h){
+   bool canEatBananas(vector<int>&piles,long long mid,int h){
          long long actual_hour=0;
          for(int x:piles){
-              actual_hour+= (long long)x/mid;
+              actual_hour+=x/mid;
               if(x%mid!=0) actual_hour++;
          }
         return actual_hour<=h;
