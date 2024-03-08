@@ -1,22 +1,21 @@
 class Solution {
 public:
     int maxFrequencyElements(vector<int>& nums) {
-          
-        int n= nums.size();
-        unordered_map<int,int>umap;
-        //storing elements with frequency
-        for(int i=0;i<n;i++){
-              umap[nums[i]]++;
-        }
-        int max_frequency=0;
-        for(auto x:umap){
-              if(max_frequency<x.second) max_frequency=x.second;
-        }
-        int max_occurence=0;
-        for(int i=0;i<n;i++){
-              if(umap[nums[i]]==max_frequency) max_occurence++;
-        }
-     return max_occurence;
+          unordered_map<int,int>umap;
+          int maxOccurence=0;
+          for(auto num:nums){
+                 umap[num]++;
+          }
+          for(auto x:umap){
+                 maxOccurence = max(maxOccurence,x.second);
+          }
+         cout<<maxOccurence<<endl;
+         int count=0;
+         // in umap there will  be not duplicates key that's why will            find through vector
+         for(auto x:nums){
+                if(umap[x]==maxOccurence) count++;
+         }
+        return count;
         
     }
 };
