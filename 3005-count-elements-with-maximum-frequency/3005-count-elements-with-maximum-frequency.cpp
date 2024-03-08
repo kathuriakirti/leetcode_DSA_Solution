@@ -12,10 +12,10 @@ public:
          cout<<maxOccurence<<endl;
          int count=0;
          // in umap there will  be not duplicates key that's why will            find through vector
-         for(auto x:nums){
-                if(umap[x]==maxOccurence) count++;
+         for(auto [c1,c2]:umap){
+                if(c2==maxOccurence) count++;
          }
-        return count;
+        return count*maxOccurence;
         
     }
 };
