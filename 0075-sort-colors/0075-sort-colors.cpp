@@ -1,18 +1,18 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-         int i=0,j=nums.size()-1,it=0;
-        while(it<=j){
-                 if(nums[it]==0){
-                        swap(nums[it],nums[i]);
-                        it++; i++;
-                 }
-                 else if(nums[it]==2){
-                       swap(nums[it],nums[j]);
-                       j--;
-                 }
-                 else it++;
-               cout<<it<<" ";
-         }
+           int idx=0, leftIdx=0,rightIdx=nums.size()-1;
+           while(idx<=rightIdx){
+                  if(nums[idx]==2){
+                        swap(nums[idx],nums[rightIdx]);
+                        rightIdx--;
+                  }
+                  else if(nums[idx]==0){
+                         swap(nums[idx],nums[leftIdx]);
+                         leftIdx++;
+                         idx++;
+                  }
+                 else idx++;
+           }
     }
 };
