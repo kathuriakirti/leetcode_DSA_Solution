@@ -1,22 +1,25 @@
 class Solution {
 public:
-    void combinationSum_helper(vector<int>& candidates, int target, int sum, int idx, vector<int>&combination,vector<vector<int>>&res){
-          // base condition
-          if(sum==target){
-                 res.push_back(combination);
+    void combinationSum_helper(vector<int>& candidates, int target, int idx, vector<vector<int>>&ans, vector<int>&currSum){
+          // base conditions
+           if(target==0){
+                 ans.push_back(currSum);
                  return;
+           }
+           if(idx>=candidates.size()) return;
+          // pick element
+          if(candidates[idx]<=target){
+               currSum.push_back(candidates[idx]);
+               combinationSum_helper(candidates,target-candidates[idx],idx,ans,currSum);
+               currSum.pop_back();
           }
-          if(idx>=candidates.size() || sum>target) return;
-          for(int i = idx; i<candidates.size();i++){
-                combination.push_back(candidates[i]);
-                combinationSum_helper(candidates,target,sum+candidates[i],i,combination,res);
-                combination.pop_back();
-          }
+          // Not pick element
+          combinationSum_helper(candidates,target,idx+1,ans,currSum);
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-          vector<int>combination;
-          vector<vector<int>>res;
-          combinationSum_helper(candidates,target,0,0,combination,res);
-         return res;
+             vector<vector<int>>ans;
+             vector<int>currSum;
+             combinationSum_helper(candidates,target,0,ans,currSum);
+    return ans;
     }
 };
